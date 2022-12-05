@@ -4,17 +4,13 @@
     <form>
       <div class="form-group">
         <label for="firstname">First Name</label>
-        <input
-          type="text"
-          class="form-control"
-          v-model="currentClient.name"
-        />
+        <input type="text" class="form-control" v-model="currentClient.name" />
       </div>
       <div class="form-group">
         <label for="Username">Username</label>
         <input
           type="text"
-          class="form-control"     
+          class="form-control"
           v-model="currentClient.username"
         />
       </div>
@@ -23,31 +19,34 @@
         <label for="Email">Email</label>
         <input
           class="form-control"
-        
           required
           v-model="currentClient.email"
           email="email"
         />
-    
       </div>
 
       <div class="form-group">
         <label for="city">City</label>
         <input
           type="text"
-          class="form-control"     
+          class="form-control"
           v-model="currentClient.address.city"
         />
       </div>
-
-
     </form>
 
-    <button class="badge badge-danger border border-danger mr-2 px-3 py-2" @click="deleteClient">
+    <button
+      class="badge badge-danger border border-danger mr-2 px-3 py-2"
+      @click="deleteClient"
+    >
       Delete
     </button>
 
-    <button type="submit" class="badge badge-success border border-success px-3 py-2" @click="updateClient">
+    <button
+      type="submit"
+      class="badge badge-success border border-success px-3 py-2"
+      @click="updateClient"
+    >
       Update
     </button>
     <p>{{ message }}</p>
@@ -79,25 +78,6 @@ export default defineComponent({
         .then((response: ResponseData) => {
           this.currentClient = response.data;
           console.log(response.data);
-        })
-        .catch((e: Error) => {
-          console.log(e);
-        });
-    },
-
-    updatePublished(status: boolean) {
-      let data = {
-        id: this.currentClient.id,
-        name: this.currentClient.name,
-        username: this.currentClient.username,
-        published: status,
-      };
-
-      ClientDataService.update(this.currentClient.id, data)
-        .then((response: ResponseData) => {
-          console.log(response.data);
-          //this.currentClient.published = status;
-          this.message = "The status was updated successfully!";
         })
         .catch((e: Error) => {
           console.log(e);

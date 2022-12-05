@@ -5,14 +5,14 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Search by title"
-          v-model="title"
+          placeholder="Search by Full Name"
+          v-model="name"
         />
         <div class="input-group-append">
           <button
             class="btn btn-outline-secondary"
             type="button"
-            @click="searchTitle"
+            @click="searchName"
           >
             Search
           </button>
@@ -33,9 +33,6 @@
         </li>
       </ul>
 
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllClients">
-        Remove All
-      </button>
     </div>
     <div class="col-md-6">
       <div v-if="currentClient.id">
@@ -55,14 +52,10 @@
           <label><strong>Email:</strong></label>
           {{ currentClient.email }}
         </div>
-        <!-- <div>
-          <label><strong>Status:</strong></label>
-          {{ currentClient.published ? "Published" : "Pending" }}
-        </div> -->
 
         <router-link
           :to="'/clients/' + currentClient.id"
-          class="badge badge-warning px-3 py-2 "
+          class="badge badge-warning px-3 py-2"
           >Edit</router-link
         >
       </div>
@@ -87,7 +80,7 @@ export default defineComponent({
       clients: [] as Client[],
       currentClient: {} as Client,
       currentIndex: -1,
-      title: "",
+      name: "",
     };
   },
   methods: {
@@ -113,19 +106,9 @@ export default defineComponent({
       this.currentIndex = index;
     },
 
-    removeAllClients() {
-      ClientDataService.deleteAll()
-        .then((response: ResponseData) => {
-          console.log(response.data);
-          this.refreshList();
-        })
-        .catch((e: Error) => {
-          console.log(e);
-        });
-    },
-
-    searchTitle() {
-      ClientDataService.findByTitle(this.title)
+  
+    searchName() {
+      ClientDataService.findByName(this.name)
         .then((response: ResponseData) => {
           this.clients = response.data;
           this.setActiveClient({} as Client);

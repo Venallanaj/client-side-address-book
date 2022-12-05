@@ -26,8 +26,8 @@ class ClientDataService {
     return http.delete(``);
   }
 
-  findByTitle(title: string): Promise<any> {
-    return http.get(`?name=${title}`);
+  findByName(name: string): Promise<any> {
+    return http.get(`?name=${name}`);
   }
 }
 
