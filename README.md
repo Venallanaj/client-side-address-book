@@ -5,12 +5,12 @@ Build a Vue.js 3 Typescript client-side-address-book to consume REST APIs, displ
 ## Project setup
 
 I have used technology:
-node:10.24.1
-npm:6.14.12
-vue 3
-typescript 4
-vue-router 4
-axios 0.21.1
+node:10.24.1,
+npm:6.14.12,
+vue 3,
+typescript 4,
+vue-router 4,
+axios 0.21.1,
 bootstrap 4
 
 To run in your Pc, follow commands as below:
