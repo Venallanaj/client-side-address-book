@@ -1,4 +1,4 @@
-# Vue 3 Typescript example with Axios & Vue Router: Build CRUD App
+# Vue.js 3 Typescript client-side-address-book: Build CRUD App
 
 Build a Vue.js 3 Typescript client-side-address-book to consume REST APIs, display and modify data using Axios and Vue Router.
 

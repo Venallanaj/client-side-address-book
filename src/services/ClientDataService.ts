@@ -2,7 +2,7 @@ import http from "@/http-common";
 
 /* eslint-disable */
 class ClientDataService {
-  getAll(): Promise<any> {
+  getAll(): Promise<any> { ;
     return http.get("");
   }
 

@@ -32,7 +32,6 @@
           {{ client.name }}
         </li>
       </ul>
-
     </div>
     <div class="col-md-6">
       <div v-if="currentClient.id">
@@ -87,6 +86,7 @@ export default defineComponent({
     retrieveClients() {
       ClientDataService.getAll()
         .then((response: ResponseData) => {
+          debugger;
           this.clients = response.data;
           console.log(response.data);
         })
@@ -106,7 +106,6 @@ export default defineComponent({
       this.currentIndex = index;
     },
 
-  
     searchName() {
       ClientDataService.findByName(this.name)
         .then((response: ResponseData) => {

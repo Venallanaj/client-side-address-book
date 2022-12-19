@@ -23,8 +23,6 @@
       </div>
 
       <div class="form-group">
-        
-
         <label for="Email">Email</label>
         <input
           class="form-control"
@@ -33,22 +31,22 @@
           v-model="client.email"
           type="email"
         />
-        <span v-show="wrongEmail" style="color:red">Incorrect email address</span>
+        <span v-show="wrongEmail" style="color: red"
+          >Incorrect email address</span
+        >
       </div>
 
       <div class="form-group">
         <label for="city">City</label>
         <input
           class="form-control"
-          required   
+          required
           v-model="client.address.city"
           city="city"
         />
       </div>
 
-      <button @click="saveClient" class="btn btn-success ">
-        Submit
-      </button>
+      <button @click="saveClient" class="btn btn-success">Submit</button>
     </div>
 
     <div v-else>
@@ -66,7 +64,8 @@ import ClientDataService from "@/services/ClientDataService";
 import Client from "@/types/Client";
 import ResponseData from "@/types/ResponseData";
 
-const emailRe = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const emailRe =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default defineComponent({
   name: "add-client",
@@ -95,8 +94,7 @@ export default defineComponent({
         this.client.username != "" &&
         this.wrongEmail &&
         this.client.address.city != ""
-      ) 
-      {
+      ) {
         ClientDataService.create(data)
           .then((response: ResponseData) => {
             this.client.id = response.data.id;
@@ -106,27 +104,26 @@ export default defineComponent({
           .catch((e: Error) => {
             console.log(e);
           });
-      } else{
-        alert('Please complete all fields');
+      } else {
+        alert("Please complete all fields");
         this.submitted = false;
-    } 
+      }
     },
 
     newClient() {
       this.submitted = false;
       this.client = {} as Client;
     },
-    isEmailValid() { debugger;
+    isEmailValid() {
+      debugger;
       if (emailRe.test(this.client.email)) {
         this.wrongEmail = false;
       } else {
         this.wrongEmail = true;
       }
     },
-
   },
 });
-
 </script>
 
 <style>
