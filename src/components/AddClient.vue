@@ -104,7 +104,11 @@ export default defineComponent({
           .catch((e: Error) => {
             console.log(e);
           });
-      } else {
+      } 
+      // ClientDataService.getCountries().then((countries:any)=>{
+      //    this.client.countries=countries;
+      // })
+      else {
         alert("Please complete all fields");
         this.submitted = false;
       }
@@ -115,7 +119,7 @@ export default defineComponent({
       this.client = {} as Client;
     },
     isEmailValid() {
-      debugger;
+     
       if (emailRe.test(this.client.email)) {
         this.wrongEmail = false;
       } else {
@@ -124,6 +128,8 @@ export default defineComponent({
     },
   },
 });
+
+
 </script>
 
 <style>
@@ -132,3 +138,7 @@ export default defineComponent({
   margin: auto;
 }
 </style>
+
+function countries(countries: any, any: any) {
+  throw new Error("Function not implemented.");
+}

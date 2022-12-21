@@ -1,9 +1,14 @@
 import http from "@/http-common";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { getName } = require("country-list");
 
 /* eslint-disable */
 class ClientDataService {
   getAll(): Promise<any> { ;
     return http.get("");
+  }
+  getCountries(): Promise<any> {
+    return getName();
   }
 
   get(id: any): Promise<any> {
